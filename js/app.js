@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "MI_NUMERO_WHATSAPP";
+const WHATSAPP_NUMBER = "5492323521229";
 const MANIFEST_PATH = "stickers/manifest.json";
 const STICKERS_PATH = "stickers/";
 const gallery = document.getElementById("gallery");
