@@ -8,6 +8,7 @@
   --glass: rgba(255,255,255,0.03);
 }
 
+/* reset / base */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -18,6 +19,8 @@ body{
   display:flex;
   flex-direction:column;
   min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
 /* topbar */
@@ -47,7 +50,16 @@ body{
 .title{font-size:18px;color:var(--muted)}
 
 .controls{display:flex;gap:8px;align-items:center}
-.controls input{padding:8px;border-radius:8px;border:none;min-width:180px}
+.controls input{
+  padding:8px;
+  border-radius:8px;
+  border:none;
+  min-width:180px;
+  outline:none;
+  background:rgba(255,255,255,0.06);
+  color:var(--text);
+}
+.controls input::placeholder{color:rgba(255,255,255,0.6)}
 .controls button{
   background:var(--neon);
   color:var(--bg);
@@ -63,12 +75,15 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
 .filters{display:flex;gap:18px;align-items:center;margin-bottom:12px;color:#163536}
 .filters input{padding:6px;border-radius:6px;border:1px solid #dcdcdc}
 
-/* gallery */
+/* gallery grid */
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
   gap:14px;
+  align-items:start;
 }
+
+/* card */
 .card{
   background:var(--glass);
   border-radius:12px;
@@ -79,6 +94,7 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
   gap:8px;
   box-shadow: 0 6px 18px rgba(4,30,33,0.12);
   transition:transform .12s ease,box-shadow .12s ease;
+  min-height:200px;
 }
 .card:hover{
   transform:translateY(-6px);
@@ -90,6 +106,9 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
   display:flex;
   align-items:center;
   justify-content:center;
+  background: rgba(255,255,255,0.02);
+  border-radius:8px;
+  padding:6px;
 }
 .thumb img{
   max-width:100%;
@@ -97,13 +116,63 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
   object-fit:contain;
   filter: drop-shadow(0 6px 8px rgba(0,0,0,0.25));
 }
-.filename{font-size:12px;color:#e6f6f3;word-break:break-word;text-align:center}
-.card .actions{display:flex;gap:8px}
+
+/* filename (más contraste y visibilidad) */
+.filename{
+  font-size:13px;
+  /* ahora texto oscuro para contraste con fondo claro del badge */
+  color: var(--bg);
+  word-break:break-word;
+  text-align:center;
+  /* fondo con color neón para destacar */
+  background: var(--neon);
+  width:100%;
+  padding:6px 8px;
+  border-radius:8px;
+  margin-top:4px;
+  font-weight:700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* actions row */
+.actions{display:flex;gap:8px;align-items:center;margin-top:6px}
 .card button{
   padding:6px 8px;border-radius:8px;border:none;cursor:pointer;font-weight:600;
 }
-.add-btn{background:var(--neon);color:var(--bg)}
-.qty-badge{background:#0e7b67;color:white;padding:4px 6px;border-radius:8px;font-size:12px}
+.add-btn{
+  background:var(--neon);
+  color:var(--bg);
+  min-width:70px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+/* botón "-" ahora oscuro con texto neón para máxima legibilidad */
+.actions .remove-btn{
+  background: var(--bg);
+  border: none;
+  color: var(--neon);
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.actions .remove-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+}
+.qty-badge{
+  background:#0e7b67;
+  color:white;
+  padding:4px 6px;
+  border-radius:8px;
+  font-size:12px;
+  min-width:28px;
+  text-align:center;
+  display:inline-block;
+}
 
 /* cart modal */
 .cart-modal{
@@ -128,12 +197,19 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
 .cart-summary{font-weight:700}
 .cart-buttons{display:flex;gap:8px}
 .cart-buttons .primary{background:var(--neon);border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:800;color:var(--bg)}
+.cart-buttons button{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text);cursor:pointer}
 
+/* footer */
 .footer{padding:12px;text-align:center;color:#1e6a69;background:transparent}
 
 /* responsive */
+@media (max-width:900px){
+  .gallery{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+}
 @media (max-width:600px){
   .controls input{min-width:90px}
   .logo{width:56px;height:48px;font-size:26px}
-  .gallery{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  main{padding:12px}
+  .card{min-height:180px}
+  .thumb{height:100px}
 }
