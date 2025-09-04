@@ -1,0 +1,39 @@
+name: Generar manifest de stickers
+
+permissions:
+  contents: write
+
+on:
+  push:
+    paths:
+      - 'stickers/**'
+      - 'scripts/generate-manifest.js'
+  workflow_dispatch: {}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Generar manifest.json
+        run: |
+          node scripts/generate-manifest.js
+
+      - name: Commitar manifest si cambió
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stickers/manifest.json || true
+          if git diff --staged --quiet; then
+            echo "No hay cambios en manifest.json"
+          else
+            git commit -m "chore: actualizar stickers/manifest.json [auto]" || true
+            git push
+          fi
