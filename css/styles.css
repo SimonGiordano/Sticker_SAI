@@ -1,0 +1,139 @@
+:root{
+  --bg:#06363a;
+  --neon:#cfff9f;
+  --accent:#0b4050;
+  --card:#0f5860;
+  --text:#eafaf7;
+  --muted:#b5d7d6;
+  --glass: rgba(255,255,255,0.03);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,#f0f0f0 0%, #f0f0f0 100%);
+  color:var(--text);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* topbar */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--bg);
+  padding:12px 18px;
+  gap:12px;
+  color:var(--text);
+  box-shadow:0 2px 8px rgba(0,0,0,0.25);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:76px;height:60px;
+  background:var(--neon);
+  color:var(--bg);
+  font-weight:800;
+  font-size:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  box-shadow:0 4px 0 rgba(0,0,0,0.15) inset;
+}
+.title{font-size:18px;color:var(--muted)}
+
+.controls{display:flex;gap:8px;align-items:center}
+.controls input{padding:8px;border-radius:8px;border:none;min-width:180px}
+.controls button{
+  background:var(--neon);
+  color:var(--bg);
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* layout */
+main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
+.filters{display:flex;gap:18px;align-items:center;margin-bottom:12px;color:#163536}
+.filters input{padding:6px;border-radius:6px;border:1px solid #dcdcdc}
+
+/* gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:14px;
+}
+.card{
+  background:var(--glass);
+  border-radius:12px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  box-shadow: 0 6px 18px rgba(4,30,33,0.12);
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow: 0 10px 30px rgba(4,30,33,0.18);
+}
+.thumb{
+  width:100%;
+  height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.thumb img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.25));
+}
+.filename{font-size:12px;color:#e6f6f3;word-break:break-word;text-align:center}
+.card .actions{display:flex;gap:8px}
+.card button{
+  padding:6px 8px;border-radius:8px;border:none;cursor:pointer;font-weight:600;
+}
+.add-btn{background:var(--neon);color:var(--bg)}
+.qty-badge{background:#0e7b67;color:white;padding:4px 6px;border-radius:8px;font-size:12px}
+
+/* cart modal */
+.cart-modal{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.35);
+  z-index:60;padding:18px;
+}
+.cart-modal.hidden{display:none}
+.cart-content{
+  width:100%;max-width:760px;background:linear-gradient(180deg,var(--accent),var(--card));
+  border-radius:14px;padding:18px;color:var(--text);position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+.close-btn{position:absolute;right:12px;top:12px;background:transparent;color:var(--text);border:none;font-weight:700;cursor:pointer}
+.cart-items{max-height:360px;overflow:auto;margin:12px 0;padding-right:6px}
+.cart-item{display:flex;gap:10px;align-items:center;padding:8px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.cart-item img{width:64px;height:64px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.03)}
+.cart-item .meta{flex:1}
+.cart-item .meta .name{font-size:14px}
+.cart-item .meta .qty{font-size:13px;color:var(--muted)}
+.cart-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cart-summary{font-weight:700}
+.cart-buttons{display:flex;gap:8px}
+.cart-buttons .primary{background:var(--neon);border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:800;color:var(--bg)}
+
+.footer{padding:12px;text-align:center;color:#1e6a69;background:transparent}
+
+/* responsive */
+@media (max-width:600px){
+  .controls input{min-width:90px}
+  .logo{width:56px;height:48px;font-size:26px}
+  .gallery{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+}
