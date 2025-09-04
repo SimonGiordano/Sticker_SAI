@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SAI Stickers - Catálogo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">SAI</div>
+      <div class="title">Stickers</div>
+    </div>
+    <div class="controls">
+      <input id="search" placeholder="Buscar stickers..." />
+      <button id="cartBtn">Carrito (<span id="cartCount">0</span>)</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="filters">
+      <label>
+        Mostrar por nombre:
+        <input id="filterInput" placeholder="Filtrar por texto..." />
+      </label>
+      <label>
+        Mostrar solo seleccionados
+        <input id="onlySelected" type="checkbox" />
+      </label>
+    </section>
+
+    <section id="gallery" class="gallery"></section>
+  </main>
+
+  <div id="cartModal" class="cart-modal hidden" aria-hidden="true">
+    <div class="cart-content">
+      <button id="closeCart" class="close-btn">X</button>
+      <h2>Tu carrito</h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-actions">
+        <div id="cartSummary" class="cart-summary"></div>
+        <div class="cart-buttons">
+          <button id="clearCart">Vaciar</button>
+          <button id="checkoutBtn" class="primary">Pagar por WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <small>SAI Stickers • Contacto por WhatsApp</small>
+  </footer>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
