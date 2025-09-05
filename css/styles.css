@@ -120,9 +120,11 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
 /* filename (más contraste y visibilidad) */
 .filename{
   font-size:13px;
+  /* ahora texto oscuro para contraste con fondo claro del badge */
   color: var(--bg);
   word-break:break-word;
   text-align:center;
+  /* fondo con color neón para destacar */
   background: var(--neon);
   width:100%;
   padding:6px 8px;
@@ -235,3 +237,27 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
   box-shadow:0 6px 18px rgba(20,40,30,0.12);
   transform:translateY(-2px);
 }
+
+/* ---------- MODAL DE MEDIDAS (pequeño) ---------- */
+#sizeModal .cart-content{
+  max-width:420px;
+  text-align:center;
+}
+.size-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.size-option{
+  background:rgba(255,255,255,0.06);
+  color:var(--text);
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.04);
+  cursor:pointer;
+  font-weight:700;
+}
+.size-option.active{background:var(--neon);color:var(--bg);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+#specialSizeInput{margin-top:12px;display:none;}
+#specialSizeInput input{padding:8px;border-radius:8px;border:none;min-width:140px;background:rgba(255,255,255,0.04);color:var(--text)}
+
+/* Image preview modal */
+#previewModal .cart-content{max-width:640px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+#previewModal img{max-width:100%;max-height:80vh;border-radius:12px}
+#previewName{color:var(--text);font-weight:700}

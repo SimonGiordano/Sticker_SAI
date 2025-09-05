@@ -55,6 +55,29 @@
     </div>
   </div>
 
+  <!-- Modal Selección de Medida -->
+  <div id="sizeModal" class="cart-modal hidden" aria-hidden="true">
+    <div class="cart-content">
+      <button id="closeSizeModal" class="close-btn">X</button>
+      <h2>Elegir medida</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+        <button class="size-option" data-size="4x4">4x4</button>
+        <button class="size-option" data-size="5x5">5x5</button>
+        <button class="size-option" data-size="6x6">6x6</button>
+        <button class="size-option" data-size="especial">Especial</button>
+      </div>
+      <div id="specialSizeInput" style="margin-top:12px;display:none;">
+        <label>
+          Medida especial: 
+          <input id="customSize" placeholder="Ej: 8x10" style="padding:6px;border-radius:6px;border:1px solid #ccc;"/>
+        </label>
+      </div>
+      <div style="margin-top:18px;text-align:right;">
+        <button id="confirmSizeBtn" class="primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal de contacto -->
   <div id="contactModal" class="cart-modal hidden" aria-hidden="true">
     <div class="cart-content">
