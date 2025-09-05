@@ -669,6 +669,141 @@
       "name": "sticker 133",
       "path": "Videojuegos/sticker 133.png",
       "category": "Videojuegos"
+    },
+    {
+      "name": "sticker 135",
+      "path": "Series Animadas/sticker 135.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 138",
+      "path": "Series Animadas/sticker 138.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 139",
+      "path": "Series Animadas/sticker 139.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 140",
+      "path": "Series Animadas/sticker 140.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 141",
+      "path": "Series Animadas/sticker 141.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 142",
+      "path": "Series Animadas/sticker 142.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 143",
+      "path": "Series Animadas/sticker 143.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 144",
+      "path": "Artist/sticker 144.png",
+      "category": "Artist"
+    },
+    {
+      "name": "sticker 145",
+      "path": "Series Animadas/sticker 145.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 146",
+      "path": "memes/sticker 146.png",
+      "category": "memes"
+    },
+    {
+      "name": "sticker 147",
+      "path": "memes/sticker 147.png",
+      "category": "memes"
+    },
+    {
+      "name": "sticker 148",
+      "path": "Series Animadas/sticker 148.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 149",
+      "path": "aestethic/sticker 149.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 150",
+      "path": "Series Animadas/sticker 150.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 151",
+      "path": "aestethic/sticker 151.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 152",
+      "path": "aestethic/sticker 152.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 153",
+      "path": "aestethic/sticker 153.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 154",
+      "path": "aestethic/sticker 154.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 155",
+      "path": "aestethic/sticker 155.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 156",
+      "path": "aestethic/sticker 156.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 157",
+      "path": "aestethic/sticker 157.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 158",
+      "path": "aestethic/sticker 158.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 159",
+      "path": "aestethic/sticker 159.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 160",
+      "path": "aestethic/sticker 160.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 161",
+      "path": "aestethic/sticker 161.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 162",
+      "path": "aestethic/sticker 162.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 163",
+      "path": "aestethic/sticker 163.png",
+      "category": "aestethic"
     }
   ],
   "byCategory": [
@@ -895,6 +1030,11 @@
     {
       "name": "sticker 113",
       "path": "Artist/sticker 113.png",
+      "category": "Artist"
+    },
+    {
+      "name": "sticker 144",
+      "path": "Artist/sticker 144.png",
       "category": "Artist"
     },
     {
@@ -1143,6 +1283,56 @@
       "category": "Series Animadas"
     },
     {
+      "name": "sticker 135",
+      "path": "Series Animadas/sticker 135.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 138",
+      "path": "Series Animadas/sticker 138.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 139",
+      "path": "Series Animadas/sticker 139.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 140",
+      "path": "Series Animadas/sticker 140.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 141",
+      "path": "Series Animadas/sticker 141.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 142",
+      "path": "Series Animadas/sticker 142.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 143",
+      "path": "Series Animadas/sticker 143.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 145",
+      "path": "Series Animadas/sticker 145.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 148",
+      "path": "Series Animadas/sticker 148.png",
+      "category": "Series Animadas"
+    },
+    {
+      "name": "sticker 150",
+      "path": "Series Animadas/sticker 150.png",
+      "category": "Series Animadas"
+    },
+    {
       "name": "sticker 1",
       "path": "Videojuegos/sticker 1.png",
       "category": "Videojuegos"
@@ -1303,6 +1493,76 @@
       "category": "aestethic"
     },
     {
+      "name": "sticker 149",
+      "path": "aestethic/sticker 149.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 151",
+      "path": "aestethic/sticker 151.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 152",
+      "path": "aestethic/sticker 152.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 153",
+      "path": "aestethic/sticker 153.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 154",
+      "path": "aestethic/sticker 154.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 155",
+      "path": "aestethic/sticker 155.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 156",
+      "path": "aestethic/sticker 156.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 157",
+      "path": "aestethic/sticker 157.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 158",
+      "path": "aestethic/sticker 158.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 159",
+      "path": "aestethic/sticker 159.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 160",
+      "path": "aestethic/sticker 160.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 161",
+      "path": "aestethic/sticker 161.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 162",
+      "path": "aestethic/sticker 162.png",
+      "category": "aestethic"
+    },
+    {
+      "name": "sticker 163",
+      "path": "aestethic/sticker 163.png",
+      "category": "aestethic"
+    },
+    {
       "name": "Sticker 29",
       "path": "memes/Sticker 29.png",
       "category": "memes"
@@ -1340,6 +1600,16 @@
     {
       "name": "sticker 129",
       "path": "memes/sticker 129.png",
+      "category": "memes"
+    },
+    {
+      "name": "sticker 146",
+      "path": "memes/sticker 146.png",
+      "category": "memes"
+    },
+    {
+      "name": "sticker 147",
+      "path": "memes/sticker 147.png",
       "category": "memes"
     }
   ]
