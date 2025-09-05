@@ -20,13 +20,19 @@
 
   <main>
     <section class="filters">
-      <label>
-        Mostrar por nombre:
-        <input id="filterInput" placeholder="Filtrar por numero..." />
+      <div id="categoriesContainer" class="categories-container"></div>
+
+      <label style="margin-left:12px;">
+        Buscar:
+        <input id="search" placeholder="Buscar stickers..." />
       </label>
-      <label>
-        Mostrar solo seleccionados
-        <input id="onlySelected" type="checkbox" />
+
+      <label style="margin-left:8px;">
+        <input id="onlySelected" type="checkbox" /> Mostrar solo seleccionados
+      </label>
+
+      <label style="margin-left:auto;">
+        <input id="filterInput" placeholder="Filtro por texto (opcional)" />
       </label>
     </section>
 

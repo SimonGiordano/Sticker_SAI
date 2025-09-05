@@ -213,3 +213,28 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
   .card{min-height:180px}
   .thumb{height:100px}
 }
+
+.categories-container{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.category-pill{
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.04);
+  color:var(--text);
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.03);
+  font-weight:600;
+  user-select:none;
+}
+.category-pill.active{
+  background:var(--neon);
+  color:var(--bg);
+  box-shadow:0 6px 18px rgba(20,40,30,0.12);
+  transform:translateY(-2px);
+}
+

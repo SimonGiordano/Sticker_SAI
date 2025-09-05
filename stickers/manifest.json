@@ -1,1 +1,672 @@
-[]
+[
+  {
+    "name": "sticker 84.png",
+    "path": "Argentina/sticker 84.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 85.png",
+    "path": "Argentina/sticker 85.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 86.png",
+    "path": "Argentina/sticker 86.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 87.png",
+    "path": "Argentina/sticker 87.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 88.png",
+    "path": "Argentina/sticker 88.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 99.png",
+    "path": "Argentina/sticker 99.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 102.png",
+    "path": "Argentina/sticker 102.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 103.png",
+    "path": "Argentina/sticker 103.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 108.png",
+    "path": "Argentina/sticker 108.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 109.png",
+    "path": "Argentina/sticker 109.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 123.png",
+    "path": "Argentina/sticker 123.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 124.png",
+    "path": "Argentina/sticker 124.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 125.png",
+    "path": "Argentina/sticker 125.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 126.png",
+    "path": "Argentina/sticker 126.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "sticker 127.png",
+    "path": "Argentina/sticker 127.png",
+    "category": "Argentina"
+  },
+  {
+    "name": "Sticker 46.png",
+    "path": "Artist/Sticker 46.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 47.png",
+    "path": "Artist/Sticker 47.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 48.png",
+    "path": "Artist/Sticker 48.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 52.png",
+    "path": "Artist/Sticker 52.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 53.png",
+    "path": "Artist/Sticker 53.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 54.png",
+    "path": "Artist/Sticker 54.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 55.png",
+    "path": "Artist/Sticker 55.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 57.png",
+    "path": "Artist/Sticker 57.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 58.png",
+    "path": "Artist/Sticker 58.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 59.png",
+    "path": "Artist/Sticker 59.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 61.png",
+    "path": "Artist/Sticker 61.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 62.png",
+    "path": "Artist/Sticker 62.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 63.png",
+    "path": "Artist/Sticker 63.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 65.png",
+    "path": "Artist/Sticker 65.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 70.png",
+    "path": "Artist/Sticker 70.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 71.png",
+    "path": "Artist/Sticker 71.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 72.png",
+    "path": "Artist/Sticker 72.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 73.png",
+    "path": "Artist/Sticker 73.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 74.png",
+    "path": "Artist/Sticker 74.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 75.png",
+    "path": "Artist/Sticker 75.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 76.png",
+    "path": "Artist/Sticker 76.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 77.png",
+    "path": "Artist/Sticker 77.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 78.png",
+    "path": "Artist/Sticker 78.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 79.png",
+    "path": "Artist/Sticker 79.png",
+    "category": "Artist"
+  },
+  {
+    "name": "sticker 95.png",
+    "path": "Artist/sticker 95.png",
+    "category": "Artist"
+  },
+  {
+    "name": "sticker 97.png",
+    "path": "Artist/sticker 97.png",
+    "category": "Artist"
+  },
+  {
+    "name": "sticker 98.png",
+    "path": "Artist/sticker 98.png",
+    "category": "Artist"
+  },
+  {
+    "name": "sticker 110.png",
+    "path": "Artist/sticker 110.png",
+    "category": "Artist"
+  },
+  {
+    "name": "sticker 111.png",
+    "path": "Artist/sticker 111.png",
+    "category": "Artist"
+  },
+  {
+    "name": "sticker 113.png",
+    "path": "Artist/sticker 113.png",
+    "category": "Artist"
+  },
+  {
+    "name": "Sticker 66.png",
+    "path": "Cantantes/Sticker 66.png",
+    "category": "Cantantes"
+  },
+  {
+    "name": "Sticker 67.png",
+    "path": "Cantantes/Sticker 67.png",
+    "category": "Cantantes"
+  },
+  {
+    "name": "Sticker 68.png",
+    "path": "Cantantes/Sticker 68.png",
+    "category": "Cantantes"
+  },
+  {
+    "name": "Sticker 69.png",
+    "path": "Cantantes/Sticker 69.png",
+    "category": "Cantantes"
+  },
+  {
+    "name": "sticker 92.png",
+    "path": "Cantantes/sticker 92.png",
+    "category": "Cantantes"
+  },
+  {
+    "name": "sticker 93.png",
+    "path": "Cantantes/sticker 93.png",
+    "category": "Cantantes"
+  },
+  {
+    "name": "sticker 94.png",
+    "path": "Cantantes/sticker 94.png",
+    "category": "Cantantes"
+  },
+  {
+    "name": "Sticker 32.png",
+    "path": "Criaturas Acuaticas/Sticker 32.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "Sticker 33.png",
+    "path": "Criaturas Acuaticas/Sticker 33.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "Sticker 34.png",
+    "path": "Criaturas Acuaticas/Sticker 34.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "Sticker 35.png",
+    "path": "Criaturas Acuaticas/Sticker 35.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 91.png",
+    "path": "Criaturas Acuaticas/sticker 91.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 105.png",
+    "path": "Criaturas Acuaticas/sticker 105.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 114.png",
+    "path": "Criaturas Acuaticas/sticker 114.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 115.png",
+    "path": "Criaturas Acuaticas/sticker 115.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 117.png",
+    "path": "Criaturas Acuaticas/sticker 117.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 118.png",
+    "path": "Criaturas Acuaticas/sticker 118.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 119.png",
+    "path": "Criaturas Acuaticas/sticker 119.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 120.png",
+    "path": "Criaturas Acuaticas/sticker 120.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 121.png",
+    "path": "Criaturas Acuaticas/sticker 121.png",
+    "category": "Criaturas Acuaticas"
+  },
+  {
+    "name": "sticker 112.png",
+    "path": "Marcas/sticker 112.png",
+    "category": "Marcas"
+  },
+  {
+    "name": "sticker 116.png",
+    "path": "Marcas/sticker 116.png",
+    "category": "Marcas"
+  },
+  {
+    "name": "sticker 122.png",
+    "path": "Marcas/sticker 122.png",
+    "category": "Marcas"
+  },
+  {
+    "name": "Sticker 44.png",
+    "path": "Peliculas/Sticker 44.png",
+    "category": "Peliculas"
+  },
+  {
+    "name": "Sticker 81.png",
+    "path": "Peliculas/Sticker 81.png",
+    "category": "Peliculas"
+  },
+  {
+    "name": "sticker 82.png",
+    "path": "Peliculas/sticker 82.png",
+    "category": "Peliculas"
+  },
+  {
+    "name": "sticker 83.png",
+    "path": "Peliculas/sticker 83.png",
+    "category": "Peliculas"
+  },
+  {
+    "name": "sticker 101.png",
+    "path": "Peliculas/sticker 101.png",
+    "category": "Peliculas"
+  },
+  {
+    "name": "sticker 0.png",
+    "path": "Series Animadas/sticker 0.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "sticker 6.png",
+    "path": "Series Animadas/sticker 6.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "sticker 10.png",
+    "path": "Series Animadas/sticker 10.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "sticker 11.png",
+    "path": "Series Animadas/sticker 11.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 12.png",
+    "path": "Series Animadas/Sticker 12.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 13.png",
+    "path": "Series Animadas/Sticker 13.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 14.png",
+    "path": "Series Animadas/Sticker 14.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 21.png",
+    "path": "Series Animadas/Sticker 21.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 23.png",
+    "path": "Series Animadas/Sticker 23.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 24.png",
+    "path": "Series Animadas/Sticker 24.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 27.png",
+    "path": "Series Animadas/Sticker 27.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 28.png",
+    "path": "Series Animadas/Sticker 28.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 36.png",
+    "path": "Series Animadas/Sticker 36.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 43.png",
+    "path": "Series Animadas/Sticker 43.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 45.png",
+    "path": "Series Animadas/Sticker 45.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 49.png",
+    "path": "Series Animadas/Sticker 49.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 50.png",
+    "path": "Series Animadas/Sticker 50.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 51.png",
+    "path": "Series Animadas/Sticker 51.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "Sticker 60.png",
+    "path": "Series Animadas/Sticker 60.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "sticker 90.png",
+    "path": "Series Animadas/sticker 90.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "sticker 100.png",
+    "path": "Series Animadas/sticker 100.png",
+    "category": "Series Animadas"
+  },
+  {
+    "name": "sticker 1.png",
+    "path": "Videojuegos/sticker 1.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 2.png",
+    "path": "Videojuegos/sticker 2.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 3.png",
+    "path": "Videojuegos/sticker 3.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 4.png",
+    "path": "Videojuegos/sticker 4.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 5.png",
+    "path": "Videojuegos/sticker 5.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 7.png",
+    "path": "Videojuegos/sticker 7.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 9.png",
+    "path": "Videojuegos/sticker 9.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "Sticker 15.png",
+    "path": "Videojuegos/Sticker 15.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "Sticker 19.png",
+    "path": "Videojuegos/Sticker 19.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "Sticker 26.png",
+    "path": "Videojuegos/Sticker 26.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 104.png",
+    "path": "Videojuegos/sticker 104.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 130.png",
+    "path": "Videojuegos/sticker 130.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 131.png",
+    "path": "Videojuegos/sticker 131.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 132.png",
+    "path": "Videojuegos/sticker 132.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 133.png",
+    "path": "Videojuegos/sticker 133.png",
+    "category": "Videojuegos"
+  },
+  {
+    "name": "sticker 8.png",
+    "path": "aestethic/sticker 8.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 16.png",
+    "path": "aestethic/Sticker 16.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 17.png",
+    "path": "aestethic/Sticker 17.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 18.png",
+    "path": "aestethic/Sticker 18.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 20.png",
+    "path": "aestethic/Sticker 20.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 22.png",
+    "path": "aestethic/Sticker 22.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 25.png",
+    "path": "aestethic/Sticker 25.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 31.png",
+    "path": "aestethic/Sticker 31.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 37.png",
+    "path": "aestethic/Sticker 37.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 38.png",
+    "path": "aestethic/Sticker 38.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 39.png",
+    "path": "aestethic/Sticker 39.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 40.png",
+    "path": "aestethic/Sticker 40.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 41.png",
+    "path": "aestethic/Sticker 41.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 42.png",
+    "path": "aestethic/Sticker 42.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 80.png",
+    "path": "aestethic/Sticker 80.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "sticker 106.png",
+    "path": "aestethic/sticker 106.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "sticker 107.png",
+    "path": "aestethic/sticker 107.png",
+    "category": "aestethic"
+  },
+  {
+    "name": "Sticker 29.png",
+    "path": "memes/Sticker 29.png",
+    "category": "memes"
+  },
+  {
+    "name": "Sticker 30.png",
+    "path": "memes/Sticker 30.png",
+    "category": "memes"
+  },
+  {
+    "name": "Sticker 56.png",
+    "path": "memes/Sticker 56.png",
+    "category": "memes"
+  },
+  {
+    "name": "Sticker 64.png",
+    "path": "memes/Sticker 64.png",
+    "category": "memes"
+  },
+  {
+    "name": "sticker 89.png",
+    "path": "memes/sticker 89.png",
+    "category": "memes"
+  },
+  {
+    "name": "sticker 96.png",
+    "path": "memes/sticker 96.png",
+    "category": "memes"
+  },
+  {
+    "name": "sticker 128.png",
+    "path": "memes/sticker 128.png",
+    "category": "memes"
+  },
+  {
+    "name": "sticker 129.png",
+    "path": "memes/sticker 129.png",
+    "category": "memes"
+  }
+]
