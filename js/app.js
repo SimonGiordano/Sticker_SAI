@@ -1,13 +1,15 @@
-/* js/app.js - soporte a categorías via manifest enriquecido (compatible con manifest antiguo) */
+/* js/app.js - buscador único, contacto y preview de imagen */
 
 const MANIFEST_PATH = "stickers/manifest.json";
 const STICKERS_PATH = "stickers/";
 const CONFIG_PATH = "config.json";
 
+// DOM
 const gallery = document.getElementById("gallery");
-const searchInput = document.getElementById("search");
-const filterInput = document.getElementById("filterInput");
+const searchInput = document.getElementById("search"); // único buscador (topbar)
 const onlySelected = document.getElementById("onlySelected");
+
+// Carrito
 const cartBtn = document.getElementById("cartBtn");
 const cartCountEl = document.getElementById("cartCount");
 const cartModal = document.getElementById("cartModal");
@@ -16,14 +18,32 @@ const closeCart = document.getElementById("closeCart");
 const clearCartBtn = document.getElementById("clearCart");
 const checkoutBtn = document.getElementById("checkoutBtn");
 const cartSummary = document.getElementById("cartSummary");
+
+// Categorías
 const categoriesContainer = document.getElementById("categoriesContainer");
 
-let stickers = []; // cada elemento será { name, path, category }
+// Contacto
+const contactBtn = document.getElementById("contactBtn");
+const contactModal = document.getElementById("contactModal");
+const closeContact = document.getElementById("closeContact");
+const contactMessageEl = document.getElementById("contactMessage");
+const contactSend = document.getElementById("contactSend");
+const contactClear = document.getElementById("contactClear");
+
+// Preview imagen
+const previewModal = document.getElementById("previewModal");
+const closePreview = document.getElementById("closePreview");
+const previewImg = document.getElementById("previewImg");
+const previewName = document.getElementById("previewName");
+
+// Estado
+let manifestData = null; // { all: [...], byCategory: [...] }
+let stickers = [];       // lista actual a renderizar
 let cart = loadCart();
 let WHATSAPP_NUMBER = "";
 let selectedCategory = null; // null = todas
 
-/* util */
+/* Utils */
 function loadCart(){
   try{
     const s = localStorage.getItem("sai_cart");
@@ -32,11 +52,19 @@ function loadCart(){
     return {};
   }
 }
-function saveCart(){ try{ localStorage.setItem("sai_cart", JSON.stringify(cart)); }catch(e){} updateCartCount(); }
-function updateCartCount(){ const total = Object.values(cart).reduce((a,b)=>a+(b.qty||0),0); cartCountEl.textContent = total; }
-function stripExtension(name){ return name.replace(/\.[^/.]+$/, ""); }
+function saveCart(){
+  try{ localStorage.setItem("sai_cart", JSON.stringify(cart)); }catch(e){}
+  updateCartCount();
+}
+function updateCartCount(){
+  const total = Object.values(cart).reduce((a,b)=>a+(b.qty||0),0);
+  cartCountEl.textContent = total;
+}
+function stripExtension(name){
+  return String(name).replace(/\.[^/.]+$/, "");
+}
 
-/* config */
+/* Config */
 async function fetchConfig(){
   try{
     const r = await fetch(CONFIG_PATH, { cache: "no-cache" });
@@ -49,26 +77,84 @@ async function fetchConfig(){
   }
 }
 
-/* manifest loader (retrocompatible) */
+/* Normalizadores y orden */
+function normalizeItemFromPath(pathOrName){
+  const path = String(pathOrName).replace(/^\.\//, "");
+  const parts = path.split("/");
+  const file = parts[parts.length - 1];
+  const name = stripExtension(file);
+  const category = parts.length > 1 ? parts[0] : "General";
+  return { name, path, category };
+}
+function normalizeObjectItem(obj){
+  const path = obj.path || obj.rel || obj.name || "";
+  const parts = String(path).split("/");
+  const fileFromPath = parts[parts.length - 1] || "";
+  let name = "";
+  if(obj.name && typeof obj.name === "string"){
+    name = stripExtension(obj.name);
+  } else {
+    name = stripExtension(fileFromPath);
+  }
+  const category = obj.category || (parts.length > 1 ? parts[0] : "General");
+  return { name, path: String(path), category };
+}
+function sortByName(a,b){
+  return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" });
+}
+function sortByCategoryThenName(a,b){
+  if(a.category < b.category) return -1;
+  if(a.category > b.category) return 1;
+  return sortByName(a,b);
+}
+
+/* Carga de manifest con soporte a formato viejo y nuevo */
 async function loadManifest(){
   try{
     const r = await fetch(MANIFEST_PATH, { cache: "no-cache" });
     if(r.ok){
       const data = await r.json();
-      if(Array.isArray(data) && data.length > 0){
-        if(typeof data[0] === "string"){
-          stickers = data.map(name => ({ name, path: name, category: "General" }));
-        } else if(typeof data[0] === "object"){
-          stickers = data.map(item => ({ name: item.name, path: item.path, category: item.category || "General" }));
+
+      // Formato nuevo { all, byCategory }
+      if(data && typeof data === "object" && (data.all || data.byCategory)){
+        const normAll = Array.isArray(data.all) ? data.all.map(item =>
+          (typeof item === "string") ? normalizeItemFromPath(item) : normalizeObjectItem(item)
+        ) : [];
+        const normByCat = Array.isArray(data.byCategory) ? data.byCategory.map(item =>
+          (typeof item === "string") ? normalizeItemFromPath(item) : normalizeObjectItem(item)
+        ) : [];
+        manifestData = {
+          all: normAll.slice().sort(sortByName),
+          byCategory: normByCat.slice().sort(sortByCategoryThenName)
+        };
+        stickers = manifestData.all.slice();
+        buildCategoriesAndRender();
+        return;
+      }
+
+      // Formato viejo: array
+      if(Array.isArray(data)){
+        let items = [];
+        if(data.length === 0){
+          items = [];
+        } else if(typeof data[0] === "string"){
+          items = data.map(p => normalizeItemFromPath(p));
         } else {
-          stickers = [];
+          items = data.map(o => normalizeObjectItem(o));
         }
+        const allSorted = items.slice().sort(sortByName);
+        const byCategorySorted = items.slice().sort(sortByCategoryThenName);
+        manifestData = { all: allSorted, byCategory: byCategorySorted };
+        stickers = manifestData.all.slice();
         buildCategoriesAndRender();
         return;
       }
     }
-  }catch(e){}
+  }catch(e){
+    console.warn("Error leyendo manifest:", e);
+  }
 
+  // Fallback GitHub API (si repo público y body data-attrs seteados)
   try{
     const owner = document.body.dataset.ghOwner || "";
     const repo = document.body.dataset.ghRepo || "";
@@ -77,23 +163,29 @@ async function loadManifest(){
       const r2 = await fetch(apiUrl);
       if(r2.ok){
         const data = await r2.json();
-        stickers = data
+        const items = data
           .filter(f => f.type === "file" && /\.(png|jpg|jpeg|webp|gif)$/i.test(f.name))
-          .map(f => ({ name: f.name, path: f.name, category: "General" }))
-          .sort((a,b)=> a.name.localeCompare(b.name));
+          .map(f => ({ name: stripExtension(f.name), path: f.name, category: "General" }));
+        const allSorted = items.slice().sort(sortByName);
+        const byCategorySorted = items.slice().sort(sortByCategoryThenName);
+        manifestData = { all: allSorted, byCategory: byCategorySorted };
+        stickers = manifestData.all.slice();
         buildCategoriesAndRender();
         return;
       }
     }
-  }catch(e){}
+  }catch(e){
+    console.warn("GitHub API fallback:", e);
+  }
 
-  gallery.innerHTML = `<div class="error">No se encontró stickers/manifest.json. Generá el manifest o usá el workflow.</div>`;
+  gallery.innerHTML = `<div class="error">No se encontró stickers/manifest.json ni el fallback. Generá el manifest o usá el workflow.</div>`;
 }
 
-/* categories UI */
+/* UI de categorías */
 function buildCategoriesAndRender(){
+  const listForCounts = (manifestData && manifestData.byCategory) ? manifestData.byCategory : stickers;
   const map = new Map();
-  for(const s of stickers){
+  for(const s of listForCounts){
     const cat = s.category || "General";
     map.set(cat, (map.get(cat) || 0) + 1);
   }
@@ -101,27 +193,38 @@ function buildCategoriesAndRender(){
   renderCategories(cats, map);
   renderGallery();
 }
-
 function renderCategories(cats, countsMap){
   categoriesContainer.innerHTML = "";
+
+  const allCount = (manifestData && Array.isArray(manifestData.all)) ? manifestData.all.length : stickers.length;
   const allPill = document.createElement("div");
   allPill.className = "category-pill" + (selectedCategory === null ? " active" : "");
-  allPill.textContent = `Todas (${stickers.length})`;
-  allPill.addEventListener("click", ()=> { selectedCategory = null; renderCategories(cats, countsMap); renderGallery(); });
+  allPill.textContent = `Todas (${allCount})`;
+  allPill.addEventListener("click", ()=> {
+    selectedCategory = null;
+    stickers = (manifestData && manifestData.all) ? manifestData.all.slice() : stickers;
+    renderCategories(cats, countsMap);
+    renderGallery();
+  });
   categoriesContainer.appendChild(allPill);
 
   for(const c of cats){
     const pill = document.createElement("div");
     pill.className = "category-pill" + (selectedCategory === c ? " active" : "");
     pill.textContent = `${c} (${countsMap.get(c) || 0})`;
-    pill.addEventListener("click", ()=> { selectedCategory = c; renderCategories(cats, countsMap); renderGallery(); });
+    pill.addEventListener("click", ()=> {
+      selectedCategory = c;
+      stickers = (manifestData && manifestData.byCategory) ? manifestData.byCategory.slice() : stickers;
+      renderCategories(cats, countsMap);
+      renderGallery();
+    });
     categoriesContainer.appendChild(pill);
   }
 }
 
-/* gallery */
+/* Gallery */
 function createCard(sticker){
-  const filename = sticker.name;
+  const filename = sticker.name; // ya sin extensión
   const fig = document.createElement("div");
   fig.className = "card";
   fig.dataset.filename = filename;
@@ -134,12 +237,15 @@ function createCard(sticker){
   img.src = STICKERS_PATH + sticker.path;
   img.alt = filename;
   img.loading = "lazy";
+
+  // abrir modal de preview al click
+  img.addEventListener("click", () => openPreview(sticker));
+
   thumb.appendChild(img);
 
-  const displayName = stripExtension(filename);
   const name = document.createElement("div");
   name.className = "filename";
-  name.textContent = displayName;
+  name.textContent = filename; // filename ya viene sin .png
 
   const actions = document.createElement("div");
   actions.className = "actions";
@@ -176,22 +282,22 @@ function createCard(sticker){
 }
 
 function renderGallery(){
-  const q = (searchInput.value||"").trim().toLowerCase();
-  const f = (filterInput.value||"").trim().toLowerCase();
+  const q = (searchInput?.value||"").trim().toLowerCase();
   gallery.innerHTML = "";
+
   const filtered = stickers.filter(s=>{
     if(selectedCategory && s.category !== selectedCategory) return false;
-    const lowerName = s.name.toLowerCase();
-    const display = stripExtension(lowerName);
-    if(q && !(lowerName.includes(q) || display.includes(q))) return false;
-    if(f && !(lowerName.includes(f) || display.includes(f))) return false;
-    if(onlySelected.checked && !cart[s.name]) return false;
+    const lowerName = String(s.name).toLowerCase();
+    if(q && !lowerName.includes(q)) return false;
+    if(onlySelected?.checked && !cart[s.name]) return false;
     return true;
   });
+
   if(filtered.length === 0){
     gallery.innerHTML = `<div style="padding:18px;color:#163536">No se encontraron stickers.</div>`;
     return;
   }
+
   for(const s of filtered){
     const card = createCard(s);
     gallery.appendChild(card);
@@ -214,13 +320,43 @@ function updateCardBadges(){
   });
 }
 
-/* cart */
-function addToCart(filename){ if(cart[filename]) cart[filename].qty++; else cart[filename] = { name: filename, qty: 1 }; saveCart(); updateCardBadges(); }
-function removeFromCart(filename){ delete cart[filename]; saveCart(); renderCart(); }
+/* Preview */
+function openPreview(sticker){
+  if(!previewModal) return;
+  previewImg.src = STICKERS_PATH + sticker.path;
+  previewImg.alt = sticker.name;
+  previewName.textContent = sticker.name; // sin extensión
+  previewModal.classList.remove("hidden");
+  previewModal.setAttribute("aria-hidden","false");
+}
+function closePreviewModal(){
+  if(!previewModal) return;
+  previewModal.classList.add("hidden");
+  previewModal.setAttribute("aria-hidden","true");
+}
+
+/* Carrito */
+function addToCart(filename){
+  if(cart[filename]) cart[filename].qty++;
+  else cart[filename] = { name: filename, qty: 1 };
+  saveCart();
+  updateCardBadges();
+}
+function removeFromCart(filename){
+  delete cart[filename];
+  saveCart();
+  renderCart();
+}
 function changeQty(filename, delta){
-  if(!cart[filename]){ if(delta > 0) cart[filename] = { name: filename, qty: delta }; else return; } else { cart[filename].qty += delta; }
+  if(!cart[filename]){
+    if(delta > 0) cart[filename] = { name: filename, qty: delta };
+    else return;
+  } else {
+    cart[filename].qty += delta;
+  }
   if(cart[filename] && cart[filename].qty <= 0) delete cart[filename];
-  saveCart(); renderCart();
+  saveCart();
+  renderCart();
 }
 function renderCart(){
   cartItemsEl.innerHTML = "";
@@ -238,16 +374,19 @@ function renderCart(){
     totalItems += item.qty;
     const row = document.createElement("div");
     row.className = "cart-item";
+
     const im = document.createElement("img");
-    const sObj = stickers.find(s => s.name === item.name);
-    const imgPath = sObj ? sObj.path : item.name;
+    // buscar path en manifestData.all
+    const sObj = (manifestData && manifestData.all) ? manifestData.all.find(s => s.name === item.name) : null;
+    const imgPath = sObj ? sObj.path : `${item.name}.png`; // fallback
     im.src = STICKERS_PATH + imgPath;
     im.alt = item.name;
+
     const meta = document.createElement("div");
     meta.className = "meta";
     const name = document.createElement("div");
     name.className = "name";
-    name.textContent = stripExtension(item.name);
+    name.textContent = item.name; // sin extensión
     const qty = document.createElement("div");
     qty.className = "qty";
     qty.textContent = `Cantidad: ${item.qty}`;
@@ -281,13 +420,13 @@ function renderCart(){
   updateCartCount();
 }
 
-/* UI & checkout */
+/* Modales & checkout */
 function openCart(){ renderCart(); cartModal.classList.remove("hidden"); cartModal.setAttribute("aria-hidden","false"); }
 function closeCartModal(){ cartModal.classList.add("hidden"); cartModal.setAttribute("aria-hidden","true"); }
 function clearCart(){ cart = {}; saveCart(); renderCart(); closeCartModal(); }
 
 function checkout(){
-  const items = Object.values(cart).map(i => `${stripExtension(i.name)} x${i.qty}`);
+  const items = Object.values(cart).map(i => `${i.name} x${i.qty}`);
   if(items.length === 0){ alert("El carrito está vacío."); return; }
   if(!WHATSAPP_NUMBER){ alert("No hay número de WhatsApp configurado. Edita config.json en el repo."); return; }
   const message = `Hola! Quiero comprar los siguientes stickers: ${items.join(", ")}`;
@@ -295,16 +434,61 @@ function checkout(){
   window.open(url, "_blank");
 }
 
-/* eventos */
-searchInput.addEventListener("input", ()=> renderGallery());
-filterInput.addEventListener("input", ()=> renderGallery());
-onlySelected.addEventListener("change", ()=> renderGallery());
-cartBtn.addEventListener("click", ()=> openCart());
-closeCart.addEventListener("click", ()=> closeCartModal());
-clearCartBtn.addEventListener("click", ()=> {
+/* Contacto */
+function openContact(){
+  if(!contactModal) return;
+  contactMessageEl.value = "";
+  contactModal.classList.remove("hidden");
+  contactModal.setAttribute("aria-hidden","false");
+}
+function closeContactModal(){
+  if(!contactModal) return;
+  contactModal.classList.add("hidden");
+  contactModal.setAttribute("aria-hidden","true");
+}
+function sendContact(){
+  const text = (contactMessageEl.value || "").trim();
+  if(!WHATSAPP_NUMBER){
+    alert("No hay número de WhatsApp configurado. Edita config.json en el repo.");
+    return;
+  }
+  const prefix = "Hola, vengo para consultarte: ";
+  const message = prefix + text;
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+/* Eventos */
+searchInput?.addEventListener("input", ()=> renderGallery());
+onlySelected?.addEventListener("change", ()=> renderGallery());
+
+cartBtn?.addEventListener("click", ()=> openCart());
+closeCart?.addEventListener("click", ()=> closeCartModal());
+clearCartBtn?.addEventListener("click", ()=> {
   if(confirm("Vaciar el carrito?")) clearCart();
 });
-checkoutBtn.addEventListener("click", ()=> checkout());
+checkoutBtn?.addEventListener("click", ()=> checkout());
+
+// Contacto
+contactBtn?.addEventListener("click", openContact);
+closeContact?.addEventListener("click", closeContactModal);
+contactClear?.addEventListener("click", closeContactModal);
+contactSend?.addEventListener("click", sendContact);
+
+// Preview
+closePreview?.addEventListener("click", closePreviewModal);
+// Cerrar preview al click en backdrop
+previewModal?.addEventListener("click", (e)=>{
+  if(e.target === previewModal) closePreviewModal();
+});
+// Cerrar modales con ESC
+document.addEventListener("keydown", (e)=>{
+  if(e.key === "Escape"){
+    if(!cartModal.classList.contains("hidden")) closeCartModal();
+    if(previewModal && !previewModal.classList.contains("hidden")) closePreviewModal();
+    if(contactModal && !contactModal.classList.contains("hidden")) closeContactModal();
+  }
+});
 
 /* init */
 (async function init(){

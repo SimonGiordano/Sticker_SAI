@@ -120,11 +120,9 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
 /* filename (más contraste y visibilidad) */
 .filename{
   font-size:13px;
-  /* ahora texto oscuro para contraste con fondo claro del badge */
   color: var(--bg);
   word-break:break-word;
   text-align:center;
-  /* fondo con color neón para destacar */
   background: var(--neon);
   width:100%;
   padding:6px 8px;
@@ -148,7 +146,6 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
   justify-content:center;
   gap:6px;
 }
-/* botón "-" ahora oscuro con texto neón para máxima legibilidad */
 .actions .remove-btn{
   background: var(--bg);
   border: none;
@@ -224,12 +221,13 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
 .category-pill{
   padding:6px 10px;
   border-radius:999px;
-  background:rgba(255,255,255,0.04);
-  color:var(--text);
+  background:var(--bg); /* fondo oscuro */
+  color:var(--neon);    /* texto neón */
   cursor:pointer;
-  border:1px solid rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.1);
   font-weight:600;
   user-select:none;
+  transition:all 0.2s ease;
 }
 .category-pill.active{
   background:var(--neon);
@@ -237,4 +235,3 @@ main{flex:1;padding:18px;max-width:1200px;margin:0 auto;width:100%}
   box-shadow:0 6px 18px rgba(20,40,30,0.12);
   transform:translateY(-2px);
 }
-

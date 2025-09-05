@@ -6,6 +6,15 @@
   <title>SAI Stickers - Catálogo</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
+<div id="previewModal" class="cart-modal hidden" aria-hidden="true">
+  <div class="cart-content" style="max-width:600px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+    <button id="closePreview" class="close-btn">X</button>
+    <img id="previewImg" src="" alt="Vista previa" style="max-width:100%;max-height:80vh;border-radius:12px;" />
+    <div id="previewName" style="color:var(--text);font-weight:600;text-align:center;"></div>
+  </div>
+</div>
+
 <body>
   <header class="topbar">
     <div class="brand">
@@ -14,6 +23,7 @@
     </div>
     <div class="controls">
       <input id="search" placeholder="Buscar stickers..." />
+      <button id="contactBtn">Contacto</button>
       <button id="cartBtn">Carrito (<span id="cartCount">0</span>)</button>
     </div>
   </header>
@@ -21,24 +31,15 @@
   <main>
     <section class="filters">
       <div id="categoriesContainer" class="categories-container"></div>
-
       <label style="margin-left:12px;">
-        Buscar:
-        <input id="search" placeholder="Buscar stickers..." />
-      </label>
-
-      <label style="margin-left:8px;">
         <input id="onlySelected" type="checkbox" /> Mostrar solo seleccionados
-      </label>
-
-      <label style="margin-left:auto;">
-        <input id="filterInput" placeholder="Filtro por texto (opcional)" />
       </label>
     </section>
 
     <section id="gallery" class="gallery"></section>
   </main>
 
+  <!-- Modal del carrito -->
   <div id="cartModal" class="cart-modal hidden" aria-hidden="true">
     <div class="cart-content">
       <button id="closeCart" class="close-btn">X</button>
@@ -50,6 +51,22 @@
           <button id="clearCart">Vaciar</button>
           <button id="checkoutBtn" class="primary">Pagar por WhatsApp</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de contacto -->
+  <div id="contactModal" class="cart-modal hidden" aria-hidden="true">
+    <div class="cart-content">
+      <button id="closeContact" class="close-btn">X</button>
+      <h2>Contacto</h2>
+      <div style="margin:12px 0;color:var(--text)">
+        <p>En este apartado podes hacer consultas o dudas que tengas, luego, se mandara directamente a whatsapp</p>
+        <textarea id="contactMessage" placeholder="Escribí tu consulta..." style="width:100%;height:120px;padding:10px;border-radius:8px;border:none;resize:vertical;background:rgba(255,255,255,0.03);color:var(--text)"></textarea>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;align-items:center;">
+        <button id="contactClear" style="padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text);cursor:pointer">Cerrar</button>
+        <button id="contactSend" class="primary" style="background:var(--neon);color:var(--bg);border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:800">Enviar por WhatsApp</button>
       </div>
     </div>
   </div>

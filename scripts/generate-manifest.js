@@ -26,19 +26,34 @@ async function main() {
     const manifest = raw.map(item => {
       const parts = item.rel.split("/");
       const category = parts.length > 1 ? parts[0] : "General";
+      const cleanName = item.name.replace(/\.[^/.]+$/, ""); // 🔥 quitar extensión
       return {
-        name: item.name,
+        name: cleanName,
         path: item.rel,
         category
       };
-    }).sort((a, b) => {
-      if (a.category < b.category) return -1;
-      if (a.category > b.category) return 1;
-      return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
     });
 
+    // 👉 ordena de forma global (para "Todos")
+    const sortedGlobal = [...manifest].sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" })
+    );
+
+    // 👉 ordena por categoría (para cuando se filtra)
+    const sortedByCategory = [...manifest].sort((a, b) => {
+      if (a.category < b.category) return -1;
+      if (a.category > b.category) return 1;
+      return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" });
+    });
+
+    // guardamos ambas vistas en el JSON
+    const output = {
+      all: sortedGlobal,
+      byCategory: sortedByCategory
+    };
+
     const outPath = path.join(stickersDir, "manifest.json");
-    await fs.writeFile(outPath, JSON.stringify(manifest, null, 2), "utf8");
+    await fs.writeFile(outPath, JSON.stringify(output, null, 2), "utf8");
     console.log("✅ manifest.json generado con", manifest.length, "stickers.");
   } catch (e) {
     console.error("❌ Error:", e.message);
